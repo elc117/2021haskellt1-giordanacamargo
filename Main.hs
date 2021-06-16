@@ -13,15 +13,15 @@ type Circle    = (Point,Float)
 -- Paleta (R, G, B) só com tons de verde
 -- Gera n tons de verde
 greenPalette :: Int -> [(Int,Int,Int)]
-greenPalette n = [(r,g,b) | r<-[0], g<-take n (cycle[255,245..0]), b<-[0]]
+greenPalette n = [(r,g,b) | r<-[0], g<-take n (cycle[255,245..10]), b<-[0]]
 
 -- Gera n tons de azul
 bluePalette :: Int -> [(Int,Int,Int)]
-bluePalette n = [(r,g,b) | r<-[0], g<-[0], b<-take n (cycle[255,245..0])]
+bluePalette n = [(r,g,b) | r<-[0], g<-[0], b<-take n (cycle[255,245..10])]
 
 -- Gera n tons de vermelho
 redPalette :: Int -> [(Int,Int,Int)]
-redPalette n = [(r,g,b) | r<-take n(cycle[255,245..0]), g<-[0], b<-[0]]
+redPalette n = [(r,g,b) | r<-take n(cycle[255,245..10]), g<-[0], b<-[0]]
 
 
 -- Paleta com n valores retirados de uma lista com sequências de R, G e B 
@@ -93,8 +93,12 @@ main :: IO ()
 main = do
   writeFile "espiral.svg" $ svgstrs
   where svgstrs = svgBegin w h ++ svgfigs ++ svgEnd
+        
         svgfigs = svgElements svgCircle circs (map svgStyle palette)
+
         --  circleCircle2 (número_de_"ramificações", espaçamento_do_meio, raio_da_espiral,n_de_rotações, tam_das_bolinhas)
-        circs =  circleCircle2 120 35 900 10 15
+        circs =  circleCircle2 180 34 900 10 15
+        
         palette = redPalette 2000
+        
         (w,h) = (1500,1500) -- width,height da imagem SVG
