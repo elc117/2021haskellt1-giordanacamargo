@@ -54,18 +54,15 @@ circleCircle2 c ch rd rt rdd = [((centerX + cos (theta + rotation)*(awayStep * t
           radius = rd -- raio da espiral
           rotation = rt * pi -- quantas voltas dá
           r = rdd -- tamanho das bolinhas
+
+
 -------------------------------------------------------------------------------
 -- Strings SVG
 -------------------------------------------------------------------------------
 
--- Gera string representando retângulo SVG 
--- dadas coordenadas e dimensões do retângulo e uma string com atributos de estilo
-svgRect :: Rect -> String -> String 
-svgRect ((x,y),w,h) style = 
-  printf "<rect x='%.3f' y='%.3f' width='%.2f' height='%.2f' style='%s' />\n" x y w h style
 
 -- Gera string representando círculo SVG 
--- dadas coordenadas e dimensões do retângulo e uma string com atributos de estilo
+
 svgCircle :: Circle -> String -> String 
 svgCircle ((x,y),r) style = 
   printf "<circle cx='%.3f' cy='%.3f' r='%.2f' style='%s' />\n" x y r style
